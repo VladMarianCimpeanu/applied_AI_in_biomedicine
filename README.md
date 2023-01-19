@@ -1,6 +1,4 @@
-# applied_AI_in_biomedicine
-
-# repository structure:
+# (TODO)repository structure:
 
 ├── code\
 │   ├── utility_package\
