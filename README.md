@@ -9,9 +9,9 @@ Acadamic year 2022 - 2023
 - [Introduction to the problem](https://github.com/VladMarianCimpeanu/applied_AI_in_biomedicine/blob/main/README.md#introduction-to-the-problem)
 - [Dependencies](https://github.com/VladMarianCimpeanu/applied_AI_in_biomedicine/blob/main/README.md#dependencies)
 - [Data](https://github.com/VladMarianCimpeanu/applied_AI_in_biomedicine/blob/main/README.md#data)
+- [Evaluation](https://github.com/VladMarianCimpeanu/applied_AI_in_biomedicine/blob/main/README.md#evaluation)
 - [Methods](https://github.com/VladMarianCimpeanu/applied_AI_in_biomedicine/blob/main/README.md#methods)
 - [Results](https://github.com/VladMarianCimpeanu/applied_AI_in_biomedicine/blob/main/README.md#results)
-- [Evaluation](https://github.com/VladMarianCimpeanu/applied_AI_in_biomedicine/blob/main/README.md#evaluation)
 - [Limitations](https://github.com/VladMarianCimpeanu/applied_AI_in_biomedicine/blob/main/README.md#limitations)
 - [Authors](https://github.com/VladMarianCimpeanu/applied_AI_in_biomedicine/blob/main/README.md#)
 
@@ -23,17 +23,46 @@ pneumonia and tuberculosis diseases.
 In this project, we are required to develop a classifier able to detect and distinguish signs of *pneumonia* and *tuberculosis* from chest x-ray images.
 
 ## Dependencies
+In this projet we used the following packages:
+- tensorflow
+- keras
+- open_cv
+- keras_cv
+- scikit-learn
+- pandas
+- numpy
+- PIL
+
+**Important** consideration: we use keras_cv to perform mix_up data augmentation. keras_cv requires **tensorflow** **v2.9+** 
 
 ## Data
-Information on the data used in the project, including where it was obtained and any preprocessing that was done.
+The provided dataset is composed by 15470 CXR images labeled with N (*no findings*), P (*Pneumonia*) and T (*tuberculosis*) with size 400x400 distributed as follows:
+
+**TODO**: add image.
+
+To increase the quality of the images, we use CLAHE method to increase the contrast and Gaussian blur to reduce the noise. 
 ## Methods
-A brief overview of the methods and techniques used in the project, such as machine learning algorithms or statistical models.
+Deep-learning methods
+based on convolutional neural networks (CNNs) have exhibited increasing potential and efficiency in image recognition tasks, for this reason, we implement and compare different CNN-based architectures. The notebooks where these models are trained can be found in the code folder. Finally we use grad-CAM and occlusion techniques to get explainations from our models.
+
+## Evaluation
+Due to the high imbalance between classes, accuracy can not be considered as a good metric. More interesting are Precision, F1-score and Recall.\
+Our best model reaches the following performances on the test set:
+
+| Metrics | No findings | Pneumonia | Tuberculosis|  
+|------|---------|--------|--------|
+|*Precision*|0.972| 0.978| 0.943|
+|*Recall*|0.980|0.985| 0.887|
+|*F1-score*|0.976|0.982| 0.914|
+
 ## Results
 A summary of the project's results, including any key findings or insights.
-## Evaluation
-Information on how the project's performance was evaluated, such as by using metrics like accuracy or F1 score.
+
 ## Limitations
-A discussion of any limitations or assumptions of the project.
+We trained our models on Colab platform, providing us with nvidia tesla k80 gpu (24GB VRAM) and 12GB of RAM. Due to the size of images and the memory consumption of the models at training time, we easily run out of memory, thus, for our best models we couldn't afford a batch size greater than 32.\
+This implies one epoch took us 470s on average. VRAM is not the only limitation, as matter of fact, we tried to optimize the data pipeline by caching all the images on RAM, so that the dataset iterator does not need to read images from disk, nevertheless, RAM memory was not enough, avoiding us performing this optimization.
+
+Given this hardware limitations, we could not deeply explore the hyperparameters space and use cross validation to get more robust results.
 ## Authors
 | Name | Surname | github | 
 |------|---------|--------|
