@@ -33,17 +33,20 @@ In this projet we used the following packages:
 - numpy
 - PIL
 
-**Important** consideration: we use keras_cv to perform mix_up data augmentation. keras_cv requires **tensorflow** **v2.9+** 
+**Important** consideration: we use keras_cv to perform mix_up data augmentation.\keras_cv requires **tensorflow** **v2.9+** 
 
 ## Data
 The provided dataset is composed by 15470 CXR images labeled with N (*no findings*), P (*Pneumonia*) and T (*tuberculosis*) with size 400x400 distributed as follows:
 
-**TODO**: add image.
+![labels_distribution](https://user-images.githubusercontent.com/62434812/215167762-b759f4f9-e6b7-44c2-952f-36629ee61c65.png)
+
 
 To increase the quality of the images, we use CLAHE method to increase the contrast and Gaussian blur to reduce the noise. 
 ## Methods
 Deep-learning methods
 based on convolutional neural networks (CNNs) have exhibited increasing potential and efficiency in image recognition tasks, for this reason, we implement and compare different CNN-based architectures. The notebooks where these models are trained can be found in the code folder. Finally we use grad-CAM and occlusion techniques to get explainations from our models.
+![pipeline](https://user-images.githubusercontent.com/62434812/215168386-15b95452-5c0b-410f-be82-e6f5c16091be.png)
+
 
 ## Evaluation
 Due to the high imbalance between classes, accuracy can not be considered as a good metric. More interesting are Precision, F1-score and Recall.\
@@ -57,6 +60,9 @@ Our best model reaches the following performances on the test set:
 
 ## Results
 A summary of the project's results, including any key findings or insights.
+![gradcam_coronet2](https://user-images.githubusercontent.com/62434812/215168509-e5463299-96cc-40a0-9789-48f24eb34c25.png)
+![gradcam_darknet1](https://user-images.githubusercontent.com/62434812/215168513-ce52bd4b-4ffa-4c60-844d-ff0cf489463d.png)
+![gradcam_darknet2](https://user-images.githubusercontent.com/62434812/215168518-baf2eed1-60d6-4d62-910c-f0c2eaf67606.png)
 
 ## Limitations
 We trained our models on Colab platform, providing us with nvidia tesla k80 gpu (24GB VRAM) and 12GB of RAM. Due to the size of images and the memory consumption of the models at training time, we easily run out of memory, thus, for our best models we couldn't afford a batch size greater than 32.\
