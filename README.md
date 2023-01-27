@@ -16,14 +16,10 @@ Acadamic year 2022 - 2023
 - [Authors](https://github.com/VladMarianCimpeanu/applied_AI_in_biomedicine/blob/main/README.md#)
 
 ## Introduction to the problem
-Lung diseases are often associated with excruciating pain and suffering as they affect the breathing pattern of the
-patient due to suffocation and related symptoms. They are also one of the top causes of death worldwide and include
-pneumonia and tuberculosis diseases.
-
 In this project, we are required to develop a classifier able to detect and distinguish signs of *pneumonia* and *tuberculosis* from chest x-ray images.
 
 ## Dependencies
-In this projet we used the following packages:
+In this project, we used the following packages:
 - tensorflow
 - keras
 - open_cv
@@ -33,7 +29,7 @@ In this projet we used the following packages:
 - numpy
 - PIL
 
-**Important** consideration: we use keras_cv to perform mix_up data augmentation.\keras_cv requires **tensorflow** **v2.9+** 
+**Important**: keras_cv requires **tensorflow** **v2.9+** 
 
 ## Data
 The provided dataset is composed by 15470 CXR images labeled with N (*no findings*), P (*Pneumonia*) and T (*tuberculosis*) with size 400x400 distributed as follows:
