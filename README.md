@@ -38,8 +38,7 @@ In this projet we used the following packages:
 ## Data
 The provided dataset is composed by 15470 CXR images labeled with N (*no findings*), P (*Pneumonia*) and T (*tuberculosis*) with size 400x400 distributed as follows:
 
-![labels_distribution](https://user-images.githubusercontent.com/62434812/215167762-b759f4f9-e6b7-44c2-952f-36629ee61c65.png)
-
+<img src="https://user-images.githubusercontent.com/62434812/215167762-b759f4f9-e6b7-44c2-952f-36629ee61c65.png" width="400" height="400" />
 
 To increase the quality of the images, we use CLAHE method to increase the contrast and Gaussian blur to reduce the noise. 
 ## Methods
@@ -59,10 +58,11 @@ Our best model reaches the following performances on the test set:
 |*F1-score*|0.976|0.982| 0.914|
 
 ## Results
-A summary of the project's results, including any key findings or insights.
-![gradcam_coronet2](https://user-images.githubusercontent.com/62434812/215168509-e5463299-96cc-40a0-9789-48f24eb34c25.png)
-![gradcam_darknet1](https://user-images.githubusercontent.com/62434812/215168513-ce52bd4b-4ffa-4c60-844d-ff0cf489463d.png)
-![gradcam_darknet2](https://user-images.githubusercontent.com/62434812/215168518-baf2eed1-60d6-4d62-910c-f0c2eaf67606.png)
+Given the table above, it is clear that the model behaves pretty well in detecting Pneumonia, whereas, it struggles to identify Tuberculosis, more precisly, given that its recall is low and the precision is high, it means that it is not able to detect all the tuberculosis cases, but when it does, the prediction is almost always correct, thus, it confuses T with N but the contrary is not true.\
+Below we provide some examples of explainability through grad-CAM of Tuberculosis images.
+
+![gradcam_coronet2](https://user-images.githubusercontent.com/62434812/215179542-c516b80b-f54a-45f6-85ec-11695040099b.png)
+![gradcam_darknet2](https://user-images.githubusercontent.com/62434812/215179548-052a71c2-d21c-47bd-9296-f44e46ee39a5.png)
 
 ## Limitations
 We trained our models on Colab platform, providing us with nvidia tesla k80 gpu (24GB VRAM) and 12GB of RAM. Due to the size of images and the memory consumption of the models at training time, we easily run out of memory, thus, for our best models we couldn't afford a batch size greater than 32.\
