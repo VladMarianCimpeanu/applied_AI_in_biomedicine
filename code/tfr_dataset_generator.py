@@ -45,7 +45,7 @@ class ProgressBar:
             print()
 
 
-def build_TFRecord(labels, paths, folder_path, name, size=256):
+def build_TFRecord(labels, paths, name, folder_path='TFRdataset', size=256):
     """
     Given am image dataset, this function create a new folder containg the new datataset
     with resized images and TFRrecord format. 
